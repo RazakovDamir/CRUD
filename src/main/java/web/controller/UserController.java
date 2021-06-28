@@ -52,6 +52,7 @@ public class UserController {
         return "redirect:/users";
     }
 
+    //DeleteMapping вызывает  ошибку 405
     @GetMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         userService.delete(id);

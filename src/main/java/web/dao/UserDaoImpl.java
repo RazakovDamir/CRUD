@@ -19,12 +19,7 @@ public class UserDaoImpl implements UserDao {
 
    @Override
    public List<User> getAllUsers() {
-      CriteriaBuilder cb = em.getCriteriaBuilder();
-      CriteriaQuery<User> cq = cb.createQuery(User.class);
-      Root<User> rootEntry = cq.from(User.class);
-      CriteriaQuery<User> all = cq.select(rootEntry);
-      TypedQuery<User> allQuery = em.createQuery(all);
-      return allQuery.getResultList();
+      return em.createQuery("SELECT u FROM User u", User.class).getResultList();
    }
 
    @Override
