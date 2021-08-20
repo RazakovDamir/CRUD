@@ -3,10 +3,7 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
@@ -52,8 +49,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    //DeleteMapping вызывает  ошибку 405
-    @GetMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public String deleteUser(@PathVariable("id") int id) {
         userService.delete(id);
         return "redirect:/users";
